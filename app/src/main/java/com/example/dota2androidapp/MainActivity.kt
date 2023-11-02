@@ -32,9 +32,13 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.dota2androidapp.ui.theme.Dota2AndroidAppTheme
 import kotlin.math.max
 
@@ -74,13 +78,13 @@ fun GreetingPreview() {
 @Preview
 @Composable
 fun DotaAppPreview() {
-    Header()
+    Body()
 }
 
 @Preview
 @Composable
 fun CurrentlyPreview(){
-    MainPicture()
+    Description()
 }
 
 //Components
@@ -121,5 +125,26 @@ fun Header(){
 
 @Composable
 fun Body(){
-
+    Column(
+        modifier = Modifier
+            .background(color = colorResource(id = R.color.background))
+    ) {
+        Header()
+        Description()
+    }
 }
+
+@Composable
+fun Description(){
+    Box(
+        modifier = Modifier
+            .background(color = colorResource(id = R.color.background))
+            .padding(horizontal = 30.dp)
+    )
+    {
+        Text(fontSize = 12.sp,text = stringResource(id = R.string.game_description), color = colorResource(id = R.color.description), fontStyle = FontStyle(R.font.roboto_mono_light))
+    }
+}
+
+@Composable
+
