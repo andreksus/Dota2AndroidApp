@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -137,14 +138,26 @@ fun Header(){
 
 @Composable
 fun Body(){
-    Column(
+    LazyColumn(
         modifier = Modifier
             .background(color = colorResource(id = R.color.background))
     ) {
-        Header()
-        Description()
+        item {
+            Header()
+        }
+        item {
+            Description()
+        }
+        item {
         ListPictures()
-        InstallButton()
+        }
+        item {
+            InstallButton()
+        }
+//        Header()
+//        Description()
+//        ListPictures()
+//        InstallButton()
     }
 }
 
@@ -185,18 +198,28 @@ fun ListPictures(imagesId: List<Int> = listOf(R.drawable.image_18, R.drawable.im
 
 @Composable
 fun InstallButton(){
+    Box(
+        modifier = Modifier
+            .padding(35.dp)
+    ){
         Button(
             onClick = { /*TODO*/ },
             contentPadding = PaddingValues(20.dp),
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp),
+                .fillMaxWidth(),
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(colorResource(id = R.color.button))
         ) {
-        Text("Install", color = colorResource(id = R.color.text_button), fontSize = 20.sp)
+            Text("Install", color = colorResource(id = R.color.text_button), fontSize = 20.sp)
+        }
     }
 }
 
-
+@Composable
+fun Spacer(horizontalPadding: Dp = 10.dp, verticalPadding: Dp = 10.dp ){
+    Box(
+        modifier = Modifier
+            .padding(horizontal = horizontalPadding,vertical = verticalPadding)
+    )
+}
 
