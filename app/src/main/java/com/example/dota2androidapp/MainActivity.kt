@@ -15,13 +15,17 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -30,14 +34,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.LocalPinnableContainer
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -49,6 +56,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.view.WindowCompat
 import com.example.dota2androidapp.ui.theme.Dota2AndroidAppTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import kotlin.math.max
@@ -56,16 +65,12 @@ import kotlin.math.max
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
-            Dota2AndroidAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Body()
-                }
-            }
+            Body()
+            //ConstraintLayout - Header
         }
     }
 }
@@ -95,7 +100,13 @@ fun DotaAppPreview() {
 @Preview
 @Composable
 fun CurrentlyPreview(){
-    InstallButton()
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        InstallButton()
+    }
 }
 
 
@@ -138,26 +149,49 @@ fun Header(){
 
 @Composable
 fun Body(){
-    LazyColumn(
-        modifier = Modifier
-            .background(color = colorResource(id = R.color.background))
-    ) {
-        item {
-            Header()
-        }
-        item {
-            Description()
-        }
-        item {
-        ListPictures()
-        }
-        item {
-            InstallButton()
-        }
+    Surface(
+        modifier = Modifier.fillMaxHeight(),
+        color = colorResource(id = R.color.background)) {
+        ConstraintLayout {
+            val (installButtonSpace, mainSpace) = createRefs()
+
+            LazyColumn(
+                modifier = Modifier
+                    .constrainAs(mainSpace) {
+
+                    }
+                    .windowInsetsPadding(WindowInsets.statusBars)
+            ) {
+                item {
+                    Header()
+                }
+                item {
+                    Description()
+                }
+                item {
+                    ListPictures()
+                }
+
+//        item {
+//            InstallButton()
+//        }
 //        Header()
 //        Description()
 //        ListPictures()
 //        InstallButton()
+            }
+
+            Box(Modifier
+                .constrainAs(installButtonSpace) {
+                    bottom.linkTo(parent.bottom)
+                }
+            ) {
+                Column {
+                    InstallButton()
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
@@ -198,10 +232,6 @@ fun ListPictures(imagesId: List<Int> = listOf(R.drawable.image_18, R.drawable.im
 
 @Composable
 fun InstallButton(){
-    Box(
-        modifier = Modifier
-            .padding(35.dp)
-    ){
         Button(
             onClick = { /*TODO*/ },
             contentPadding = PaddingValues(20.dp),
@@ -212,7 +242,6 @@ fun InstallButton(){
         ) {
             Text("Install", color = colorResource(id = R.color.text_button), fontSize = 20.sp)
         }
-    }
 }
 
 @Composable
