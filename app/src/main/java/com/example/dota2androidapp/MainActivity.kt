@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowCompat
+import com.example.dota2androidapp.components.Header
 import com.example.dota2androidapp.ui.theme.Dota2AndroidAppTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import kotlin.math.max
@@ -109,43 +110,17 @@ fun CurrentlyPreview(){
     }
 }
 
-
-
-//Components
-@Composable
-fun MainPicture(){
-    Image(
-        painterResource(id = R.drawable.dota_main_picture),
-        contentDescription = null,
-        contentScale = ContentScale.FillWidth,
-        modifier = Modifier
-            .fillMaxWidth()
-    )
-}
-
-@Composable
-fun Icon(){
-    Image(
-        painterResource(id = R.drawable.icon_box),
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxHeight()
-            .size(140.dp)
-            .padding(top = 240.dp)
-    )
-}
-
-@Composable
-fun Header(){
-    Box(
-        modifier = Modifier
-            .background(color = colorResource(id = R.color.background))
-            .height(420.dp)
-    ){
-        MainPicture()
-        Icon()
-    }
-}
+//@Composable
+//fun Header(){
+//    Box(
+//        modifier = Modifier
+//            .background(color = colorResource(id = R.color.background))
+//            .height(420.dp)
+//    ){
+//        MainPicture()
+//        Icon()
+//    }
+//}
 
 @Composable
 fun Body(){
