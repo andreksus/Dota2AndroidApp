@@ -58,6 +58,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowCompat
+import com.example.dota2androidapp.components.ChipsRow
+import com.example.dota2androidapp.components.Description
 import com.example.dota2androidapp.components.Header
 import com.example.dota2androidapp.ui.theme.Dota2AndroidAppTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -141,6 +143,9 @@ fun Body(){
                     Header()
                 }
                 item {
+                    ChipsRow(titles = listOf("MOBA", "MULTIPLAYER", "STRATEGY"))
+                }
+                item {
                     Description()
                 }
                 item {
@@ -167,18 +172,6 @@ fun Body(){
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Description(){
-    Box(
-        modifier = Modifier
-            .background(color = colorResource(id = R.color.background))
-            .padding(horizontal = 30.dp)
-    )
-    {
-        Text(fontSize = 12.sp,text = stringResource(id = R.string.game_description), color = colorResource(id = R.color.description), fontStyle = FontStyle(R.font.roboto_mono_light))
     }
 }
 

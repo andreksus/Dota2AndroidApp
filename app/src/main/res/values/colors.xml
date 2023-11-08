@@ -12,4 +12,6 @@
     <color name="button">#F4D144</color>
     <color name="text_button">#050B18</color>
     <color name="text_70M">#45454D</color>
+    <color name="chip_background">#14314d</color>
+    <color name="chip_text">#41A0E7</color>
 </resources>
