@@ -58,6 +58,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowCompat
+import com.example.dota2androidapp.components.CardPicture
+import com.example.dota2androidapp.components.CardsRow
 import com.example.dota2androidapp.components.ChipsRow
 import com.example.dota2androidapp.components.Description
 import com.example.dota2androidapp.components.Header
@@ -149,7 +151,7 @@ fun Body(){
                     Description()
                 }
                 item {
-                    ListPictures()
+                    CardsRow()
                 }
 
 //        item {
@@ -171,29 +173,6 @@ fun Body(){
                     Spacer()
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun CardPicture(imageId: Int){
-    Image(
-        painter = painterResource(id = imageId),
-        contentDescription = null,
-        modifier = Modifier
-            .size(height = 135.dp, width = 240.dp)
-            .clip(shape = RoundedCornerShape(30.dp))
-    )
-}
-
-@Composable
-fun ListPictures(imagesId: List<Int> = listOf(R.drawable.image_18, R.drawable.image_18)){
-    LazyRow(
-        contentPadding = PaddingValues(30.dp),
-        horizontalArrangement = Arrangement.spacedBy(20.dp)
-    ){
-        items(imagesId){imageId ->
-            CardPicture(imageId = imageId)
         }
     }
 }
