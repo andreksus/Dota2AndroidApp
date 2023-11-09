@@ -63,6 +63,7 @@ import com.example.dota2androidapp.components.CardsRow
 import com.example.dota2androidapp.components.ChipsRow
 import com.example.dota2androidapp.components.Description
 import com.example.dota2androidapp.components.Header
+import com.example.dota2androidapp.components.Reviews
 import com.example.dota2androidapp.ui.theme.Dota2AndroidAppTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import kotlin.math.max
@@ -153,6 +154,9 @@ fun Body(){
                 item {
                     CardsRow()
                 }
+                item {
+                    Reviews()
+                }
 
 //        item {
 //            InstallButton()
@@ -163,16 +167,16 @@ fun Body(){
 //        InstallButton()
             }
 
-            Box(Modifier
-                .constrainAs(installButtonSpace) {
-                    bottom.linkTo(parent.bottom)
-                }
-            ) {
-                Column {
-                    InstallButton()
-                    Spacer()
-                }
-            }
+//            Box(Modifier
+//                .constrainAs(installButtonSpace) {
+//                    bottom.linkTo(parent.bottom)
+//                }
+//            ) {
+//                Column {
+//                    InstallButton()
+//                    Spacer()
+//                }
+//            }
         }
     }
 }

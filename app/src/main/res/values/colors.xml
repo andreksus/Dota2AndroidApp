@@ -14,4 +14,6 @@
     <color name="text_70M">#45454D</color>
     <color name="chip_background">#14314d</color>
     <color name="chip_text">#41A0E7</color>
+    <color name="reviews_text">#EEF2FB</color>
+    <color name="reviews_count">#EEF2FB</color>
 </resources>

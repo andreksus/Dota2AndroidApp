@@ -29,7 +29,6 @@ fun Header(){
     ConstraintLayout(
         modifier = Modifier
             .height(400.dp)
-            .background(colorResource(id = R.color.background))
     ) {
         val (image, row) = createRefs()
         Image(
@@ -68,7 +67,7 @@ fun Header(){
                     color = colorResource(id = R.color.white),
                     modifier = Modifier
                         .padding(top = 5.dp)
-                        .constrainAs(title){},
+                        .constrainAs(title) {},
                     fontFamily = ModernistFontFamily,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -82,12 +81,8 @@ fun Header(){
                             top.linkTo(title.bottom, margin = 6.dp)
                         }
                 ){
-                    Image(
-                        painterResource(id = R.drawable.stars),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(height = 20.dp, width = 85.dp)
-                    )
+                    Stars(5.0)
+
                     Text(
                         "70M",
                         color = colorResource(id = R.color.text_70M),

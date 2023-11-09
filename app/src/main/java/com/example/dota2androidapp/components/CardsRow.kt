@@ -11,7 +11,7 @@ import com.example.dota2androidapp.R
 @Composable
 fun CardsRow(imagesId: List<Int> = listOf(R.drawable.image_18, R.drawable.image_18)){
     LazyRow(
-        contentPadding = PaddingValues(20.dp),
+        contentPadding = PaddingValues(start = 20.dp, top = 15.dp, end = 20.dp, bottom = 20.dp),
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ){
         items(imagesId){imageId ->
