@@ -35,7 +35,7 @@ fun CommentElementPreview(){
     CommentElement()
 }
 
-val user = User("Auguste Conte", 1)
+val user = User("Auguste Conte", R.drawable.firstuser)
 val date = Date("February 14, 2019")
 const val text = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”"
 val comment1 = Comment(user, date, text)
@@ -49,7 +49,7 @@ fun CommentElement(commentP: Comment = comment1){
     ) {
         Row() {
             Image(
-                painterResource(id = R.drawable.firstuser),
+                painterResource(id = commentP.user.profilePicture),
                 contentDescription = null,
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier

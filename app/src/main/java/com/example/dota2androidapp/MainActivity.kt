@@ -59,6 +59,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowCompat
 import com.example.dota2androidapp.classes.Comment
+import com.example.dota2androidapp.classes.Date
+import com.example.dota2androidapp.classes.User
 import com.example.dota2androidapp.components.CardPicture
 import com.example.dota2androidapp.components.CardsRow
 import com.example.dota2androidapp.components.ChipsRow
@@ -118,17 +120,17 @@ fun CurrentlyPreview(){
     }
 }
 
-//@Composable
-//fun Header(){
-//    Box(
-//        modifier = Modifier
-//            .background(color = colorResource(id = R.color.background))
-//            .height(420.dp)
-//    ){
-//        MainPicture()
-//        Icon()
-//    }
-//}
+val user1 = User("Auguste Conte", R.drawable.firstuser)
+val date1 = Date("February 14, 2019")
+const val text1 = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”"
+val comment1 = Comment(user1, date1, text1)
+
+val user2 = User("Jang Marcelino", R.drawable.seconduser)
+val date2 = Date("February 14, 2019")
+const val text2 = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”"
+val comment2 = Comment(user2, date2, text2)
+
+val Comments = listOf(comment1, comment2)
 
 @Composable
 fun Body(){
@@ -136,7 +138,7 @@ fun Body(){
         modifier = Modifier.fillMaxHeight(),
         color = colorResource(id = R.color.background)) {
         ConstraintLayout {
-            val (installButtonSpace, mainSpace) = createRefs()
+            val (mainSpace) = createRefs()
 
             LazyColumn(
                 modifier = Modifier
@@ -160,29 +162,13 @@ fun Body(){
                 item {
                     Reviews()
                 }
-                item {
-                    CommentElement()
+                items(Comments){comment ->
+                    CommentElement(comment)
                 }
-
-//        item {
-//            InstallButton()
-//        }
-//        Header()
-//        Description()
-//        ListPictures()
-//        InstallButton()
+                item{
+                    InstallButton()
+                }
             }
-
-//            Box(Modifier
-//                .constrainAs(installButtonSpace) {
-//                    bottom.linkTo(parent.bottom)
-//                }
-//            ) {
-//                Column {
-//                    InstallButton()
-//                    Spacer()
-//                }
-//            }
         }
     }
 }
@@ -193,7 +179,8 @@ fun InstallButton(){
             onClick = { /*TODO*/ },
             contentPadding = PaddingValues(20.dp),
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(start = 20.dp, top = 40.dp, end = 20.dp),
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(colorResource(id = R.color.button))
         ) {
