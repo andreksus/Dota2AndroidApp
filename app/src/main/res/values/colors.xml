@@ -16,4 +16,5 @@
     <color name="chip_text">#41A0E7</color>
     <color name="reviews_text">#EEF2FB</color>
     <color name="reviews_count">#EEF2FB</color>
+    <color name="comment_line">#1A1F29</color>
 </resources>

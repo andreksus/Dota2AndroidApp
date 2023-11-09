@@ -29,7 +29,7 @@ fun Reviews(){
     ConstraintLayout(
         modifier = Modifier
             .background(color = colorResource(id = R.color.background))
-            .padding(start = 20.dp)
+            .padding(start = 20.dp, bottom = 30.dp)
     ) {
         val (title, row) = createRefs()
 

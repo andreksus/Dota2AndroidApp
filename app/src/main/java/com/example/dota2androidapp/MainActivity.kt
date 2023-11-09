@@ -58,9 +58,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.WindowCompat
+import com.example.dota2androidapp.classes.Comment
 import com.example.dota2androidapp.components.CardPicture
 import com.example.dota2androidapp.components.CardsRow
 import com.example.dota2androidapp.components.ChipsRow
+import com.example.dota2androidapp.components.CommentElement
+import com.example.dota2androidapp.components.CommentLine
 import com.example.dota2androidapp.components.Description
 import com.example.dota2androidapp.components.Header
 import com.example.dota2androidapp.components.Reviews
@@ -156,6 +159,9 @@ fun Body(){
                 }
                 item {
                     Reviews()
+                }
+                item {
+                    CommentElement()
                 }
 
 //        item {

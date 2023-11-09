@@ -5,3 +5,4 @@ class Comment(user: User, date: Date, text: String) {
     val date = date
     val text = text
 }
+
