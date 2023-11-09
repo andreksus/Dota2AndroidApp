@@ -67,4 +67,5 @@ fun Dota2AndroidAppTheme(
         typography = Typography,
         content = content
     )
+
 }

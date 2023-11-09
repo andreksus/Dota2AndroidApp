@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background">#050B18</color>
+    <color name="description">#A8ADB7</color>
+    <color name="button">#F4D144</color>
+    <color name="text_button">#050B18</color>
+    <color name="text_70M">#45454D</color>
+    <color name="chip_background">#14314d</color>
+    <color name="chip_text">#41A0E7</color>
+    <color name="reviews_text">#EEF2FB</color>
+    <color name="reviews_count">#EEF2FB</color>
+    <color name="comment_line">#1A1F29</color>
 </resources>
