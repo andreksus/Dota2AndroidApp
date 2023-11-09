@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -76,12 +77,10 @@ import kotlin.math.max
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             Body()
-            //ConstraintLayout - Header
         }
     }
 }
@@ -135,17 +134,19 @@ val Comments = listOf(comment1, comment2)
 @Composable
 fun Body(){
     Surface(
-        modifier = Modifier.fillMaxHeight(),
+        modifier = Modifier
+            .fillMaxHeight()
+            .windowInsetsPadding(WindowInsets.statusBars),
         color = colorResource(id = R.color.background)) {
-        ConstraintLayout {
+        ConstraintLayout(
+            Modifier.windowInsetsPadding(WindowInsets.statusBars)
+        ) {
             val (mainSpace) = createRefs()
 
             LazyColumn(
                 modifier = Modifier
                     .constrainAs(mainSpace) {
-
                     }
-                    .windowInsetsPadding(WindowInsets.statusBars)
             ) {
                 item {
                     Header()
